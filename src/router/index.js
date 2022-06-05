@@ -11,6 +11,13 @@ const routes = [
 		name: 'default',
 		component: Default,
 		meta: { requiresAuth: true },
+		// children: [
+    //   {
+    //     path: '/todo',
+    //     name: 'default',
+    //     component: Default,
+    //   },
+		// ]
 	},
 	{
 		path: '/auth/',
@@ -27,8 +34,6 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
 	const isAuthenticated = store.getters.isAuthenticated
-
-	console.log('router', isAuthenticated)
 
 	if (to.name !== 'auth' && !isAuthenticated) {
 		next({ name: 'auth' })

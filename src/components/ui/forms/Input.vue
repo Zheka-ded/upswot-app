@@ -8,6 +8,7 @@
     </label>
 
     <input
+      :value="modelValue"
       :type="type"
       :name="name"
       :required="required"
@@ -30,6 +31,10 @@
 import closeIcon from '@/assets/icons/close.svg'
 
 const props = defineProps({
+  modelValue:{
+    type: String,
+    default: () => '',
+  },
   label: {
     type: String,
     default: () => '',

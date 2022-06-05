@@ -168,7 +168,8 @@ function clearError () {
   box-shadow: $box-shadow;
   background: $color-white;
   right: 0;
-  top: -64%;
+  //top: -64%;
+  top: -240px;
 
   &__forgot {
     padding: 17px;

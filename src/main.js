@@ -2,6 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+import './assets/scss/styles.scss'
+
 import componentsPlugin from './plugins/components'
 
 const app = createApp(App)
@@ -14,5 +17,7 @@ store.dispatch('login', localStorage.getItem('isAuthenticated'))
 if(localStorage.getItem('user')){
 	store.dispatch('login', JSON.parse(localStorage.getItem('user')))
 }
+
+// router.push({ name: 'default' }).then(r => r)
 
 app.mount("#app");

@@ -17,10 +17,6 @@ export default defineConfig({
 			scss: {
 				additionalData: `
 					@import "./src/assets/scss/vars.scss";
-					@import "./src/assets/scss/reset.scss";
-					@import "./src/assets/scss/typography.scss";
-					@import "./src/assets/scss/components/index.scss";
-					@import "./src/assets/scss/layout/index.scss";
 				`
 			}
 		}

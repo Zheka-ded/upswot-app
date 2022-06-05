@@ -16,7 +16,7 @@
   font-size: $font-size-3;
   transition: 0.3s all ease;
   width: 100%;
-  padding: 10px;
+  padding: 10.5px;
 
   &:hover{
     background: $color-white;
