@@ -1,13 +1,22 @@
 <template>
-  <li>
+  <li class="li">
     <span>
       {{ index + 1 }} {{ todo.title }}
     </span>
-    <button
-      class="rm"
-      @click="$emit('remove-todo', todo.id)"
-    >&times;
-    </button>
+    <div class="btn-group">
+      <button
+        class="ed"
+        @click="$emit('edit-todo', todo)"
+      >
+        Edit
+      </button>
+      <button
+        class="rm"
+        @click="$emit('remove-todo', todo.id)"
+      >
+        Delete
+      </button>
+    </div>
   </li>
 </template>
 
@@ -25,29 +34,31 @@ const props = defineProps({
 })
 </script>
 
-<style scoped>
-li {
-  border: 1px solid #ccc;
+<style lang="scss">
+.li {
+  border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 2rem;
-  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  margin: 1rem 0;
 }
 
-.rm {
-  background: orangered;
+.btn-group {
+  display: flex;
+}
+
+.ed {
+  background: $color-primary-1;
   color: #fff;
   border-radius: 5px;
   font-weight: bold;
-  width: 23.8px;
-  height: 21px;
+  margin-right: 5px;
 }
 
-input {
-  margin-right: 1rem;
-}
-
-.done {
-  text-decoration: line-through;
+.rm {
+  background: $color-error;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: bold;
 }
 </style>

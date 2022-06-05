@@ -17,7 +17,6 @@ const emits = defineEmits()
 let title = ref('')
 
 function formSubmit () {
-  console.log(title.value)
   if (title.value.trim()) {
     const newTodo = {
       id: Date.now(),
