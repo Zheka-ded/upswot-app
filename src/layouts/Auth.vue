@@ -20,35 +20,47 @@
           <c-list class="mt-25" :list="data.analyticsList" />
         </div>
         <div class="auth-content__right">
-          <c-form
-            class="auth-form"
-            @keydown.enter="formSubmit"
-          >
-            <c-form-item>
-              <c-input
-                v-model="formModel.name"
-                ref="formRules.name"
-                name="name"
-                label="Name"
-                type="text"
-                :error="formError.name"
-              />
-            </c-form-item>
-            <c-form-item>
-              <c-input
-                v-model="formModel.password"
-                name="password"
-                label="Password"
-                type="password"
-                :error="formError.password"
-              />
-            </c-form-item>
-            <c-form-item>
-              <c-button @click="formSubmit">
-                LOGIN
-              </c-button>
-            </c-form-item>
-          </c-form>
+          <div class="auth-right-container">
+            <c-form
+              class="auth-form"
+              @keydown.enter="formSubmit"
+            >
+              <c-form-item>
+                <c-input
+                  v-model="formModel.name"
+                  ref="formRules.name"
+                  name="name"
+                  label="Name"
+                  type="text"
+                  :error="formError.name"
+                />
+              </c-form-item>
+              <c-form-item>
+                <c-input
+                  v-model="formModel.password"
+                  name="password"
+                  label="Password"
+                  type="password"
+                  :error="formError.password"
+                />
+              </c-form-item>
+              <c-form-item>
+                <c-button @click="formSubmit">
+                  LOGIN
+                </c-button>
+              </c-form-item>
+            </c-form>
+            <div class="auth-right-container__forgot">
+              <router-link to="#" class="h4 text-primary-1">
+                Forgot Password
+              </router-link>
+            </div>
+            <div class="auth-right-container__register">
+              <router-link to="#" class="h3 text-brown">
+                Register now
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -58,10 +70,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
 import Header from '@/components/layout/Header.vue'
 import Footer from '@/components/layout/Footer.vue'
 
 import data from '@/data/data'
+
+const store = useStore()
+const router = useRouter()
 
 const formModel = ref({
   name: '',
@@ -73,16 +90,23 @@ const formError = ref({
   password: null,
 })
 
-
 function formSubmit () {
   clearError()
   for (const key in formModel.value) {
-    if (formModel.value[key] !== data.userAuth[key]) {
-      formError.value[key] = `Field ${ key } incorrect`
-    }
     if (!formModel.value[key]) {
       formError.value[key] = `Field ${ key } is required`
+    } else if (formModel.value[key] !== data.userAuth[key]) {
+      formError.value[key] = `Field ${ key } incorrect`
     }
+  }
+
+  if (formModel.value.name === data.userAuth.name && formModel.value.password === data.userAuth.password) {
+    store.dispatch('login', { ...formModel.value })
+
+    localStorage.setItem('user', JSON.stringify({ ...formModel.value }))
+    localStorage.setItem('isAuthenticated', 'true')
+
+    router.push({ name: 'default' })
   }
 }
 
@@ -138,14 +162,29 @@ function clearError () {
   }
 }
 
-.auth-form {
+.auth-right-container {
   left: 0;
   position: absolute;
   box-shadow: $box-shadow;
-  padding: 40px 30px;
   background: $color-white;
   right: 0;
-  top: -50%;
+  top: -64%;
+
+  &__forgot {
+    padding: 17px;
+    text-align: center;
+  }
+
+  &__register {
+    background: $color-gray-1;
+    text-align: center;
+    padding: 17px;
+  }
 }
+
+.auth-form {
+  padding: 40px 30px 0;
+}
+
 
 </style>

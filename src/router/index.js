@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Default from '@/layouts/Default.vue'
 import Auth from '@/layouts/Auth.vue'
 
+import store from '@/store'
+
 const routes = [
 	{
 		path: '/',
@@ -19,24 +21,21 @@ const routes = [
 
 const router = createRouter({
 	history: createWebHistory(import.meta.env.BASE_URL),
+	// history: createWebHistory(),
 	routes,
 })
 
 router.beforeEach((to, from, next) => {
-	const isAuthenticated = false
+	const isAuthenticated = store.getters.isAuthenticated
 
-	if (to.matched.some(record => record.meta.requiresAuth)) {
-		if (!isAuthenticated) {
-			next({
-				name: 'auth',
-				query: { next: to.fullPath },
-			})
-		} else {
-			next()
-		}
-	} else {
+	console.log('router', isAuthenticated)
+
+	if (to.name !== 'auth' && !isAuthenticated) {
+		next({ name: 'auth' })
+	}	else {
 		next()
 	}
 })
+
 
 export default router

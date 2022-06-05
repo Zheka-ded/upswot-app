@@ -19,13 +19,16 @@
       :class="{'c-input__input--error': error}"
     >
 
-    <span v-if="error" class="c-input__error text-xs text-error font-light">
+    <span v-if="error" class="c-input__error h6 text-error font-light">
+      <img :src="closeIcon" alt="Check icon" class="c-input__error-icon">
       {{ error }}
     </span>
   </div>
 </template>
 
 <script setup>
+import closeIcon from '@/assets/icons/close.svg'
+
 const props = defineProps({
   label: {
     type: String,
@@ -68,7 +71,7 @@ const props = defineProps({
   &__label{}
 
   &__input{
-    height: 53px;
+    height: 50px;
     border: 1px solid $color-gray-2;
     padding-left: 15px;
     padding-right: 15px;
@@ -93,6 +96,10 @@ const props = defineProps({
     position: absolute;
     bottom: 0;
     transform: translateY(100%);
+  }
+
+  &__error-icon{
+    margin-right: 10px;
   }
 }
 </style>
