@@ -1,4 +1,4 @@
-.h1, .h2, .h3, .h4, .h5, .h6, .text-small{
+.h1, .h2, .h3, .h4, .h5, .h6, .text-sm, .text-xs{
   line-height: $line-height;
 }
 
@@ -26,10 +26,17 @@
   font-size: $font-size-6;
 }
 
-.text-small {
+.text-sm {
   font-size: $font-size-small;
 }
 
+.text-xs {
+  font-size: $font-size-small;
+}
+
+.font-light {
+  font-weight: 300;
+}
 .font-regular {
   font-weight: 400;
 }

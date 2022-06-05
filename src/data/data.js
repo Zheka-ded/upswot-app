@@ -1,5 +1,5 @@
 const userAuth = {
-	login: 'Admin',
+	name: 'Admin',
 	password: '12345',
 }
 

@@ -11,14 +11,14 @@
               v-for="item in data.footerList"
               :key="item.id"
               to="#"
-              class="footer__nav-item h5 font-medium text-white"
+              class="footer__nav-item h6 font-medium text-white"
             >
               {{ item.label }}
             </router-link>
           </div>
         </div>
         <div class="footer__copyright">
-          <p class="text-small text-white">
+          <p class="text-xs text-white">
             Copyright © 2020 Citigroup Inc. Citibank, N.A. Member FDIC. Equal Opportunity Lender.
           </p>
         </div>

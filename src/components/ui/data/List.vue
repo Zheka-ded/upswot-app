@@ -7,8 +7,8 @@
     >
       <img :src="checkIcon" alt="Check icon" class="c-list__icon">
       <div class="c-list__content">
-        <p class="c-list__title h5 font-medium">{{ item.title }}</p>
-        <p class="c-list__text h6">{{ item.text }}</p>
+        <p v-if="item.title" class="c-list__title h6 font-medium">{{ item.title }}</p>
+        <p v-if="item.text" class="c-list__text text-sm">{{ item.text }}</p>
       </div>
     </div>
   </div>
