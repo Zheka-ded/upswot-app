@@ -41,11 +41,13 @@
 
 <script setup>
 import { ref } from 'vue'
+
 const emits = defineEmits()
 const props = defineProps({
   todo: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
     required: true,
   },
   index: {
@@ -76,13 +78,13 @@ function onUpdateTodoItem (todo) {
   margin: 16px 0;
 }
 
-.update-input{
+.update-input {
   outline: none;
   border-left: 2px solid $color-primary-1;
   border-bottom: 2px solid $color-primary-1;
   border-top: none;
   border-right: none;
-  width: min-content;
+  width: 100%;
   font-size: $font-size-6;
   color: $color-brown;
 }
@@ -104,5 +106,11 @@ function onUpdateTodoItem (todo) {
   color: #fff;
   border-radius: 5px;
   font-weight: bold;
+}
+
+@media (min-width: $md) {
+  .update-input {
+    width: min-content;
+  }
 }
 </style>

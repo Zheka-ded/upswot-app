@@ -1,5 +1,5 @@
 <template>
-  <div style="padding: 0 50px">
+  <div style="padding: 0 50px 30px">
     <AddTodo @add-todo="addTodo" />
     <TodoList :todos='todos' @remove-todo="removeTodo" />
   </div>
