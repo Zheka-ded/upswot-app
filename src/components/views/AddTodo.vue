@@ -26,19 +26,20 @@ function formSubmit () {
     title.value = '';
   }
 }
-
 </script>
 
 <style lang="scss">
-.todo-form{
-  &__content{
+.todo-form {
+  &__content {
     display: flex;
     align-items: flex-end;
   }
-  &__input{
+
+  &__input {
     flex: 1;
   }
-  &__actions{
+
+  &__actions {
     width: max-content;
   }
 }

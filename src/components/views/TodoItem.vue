@@ -6,7 +6,7 @@
     <div class="btn-group">
       <button
         class="ed"
-        @click="$emit('edit-todo', todo)"
+        @click="$emit('update-todo', todo)"
       >
         Edit
       </button>

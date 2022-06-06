@@ -19,6 +19,9 @@ const emits = defineEmits()
 function removeTodo (id) {
   emits('remove-todo', id)
 }
+// function updateTodo (id) {
+//   emits('update-todo', id)
+// }
 
 </script>
 

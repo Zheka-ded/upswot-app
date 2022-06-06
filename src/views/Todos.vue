@@ -10,7 +10,7 @@ import { ref } from 'vue'
 import TodoList from '@/components/views/TodoList.vue';
 import AddTodo from '@/components/views/AddTodo.vue';
 
-let todos = ref([
+const todos = ref([
   { id: 1, title: 'Test' },
 ])
 
@@ -21,5 +21,9 @@ function removeTodo (id) {
 function addTodo (todo) {
   todos.value.push(todo)
 }
+
+// function updateTodo (todo) {
+//   return todo
+// }
 
 </script>
