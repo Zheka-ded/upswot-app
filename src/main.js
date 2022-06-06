@@ -19,8 +19,4 @@ if(localStorage.getItem('user')) {
 	store.dispatch('login', JSON.parse(localStorage.getItem('user')))
 }
 
-if(localStorage.getItem('todos')) {
-	store.dispatch('updateTodo', JSON.parse(localStorage.getItem('todos')))
-}
-
 app.mount("#app");

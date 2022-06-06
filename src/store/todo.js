@@ -8,7 +8,6 @@ const store = {
   mutations: {
     SET_TODO (state, todo) {
       state.todo = todo
-      localStorage.setItem('todos', JSON.stringify(state.todo))
     },
   },
   actions: {

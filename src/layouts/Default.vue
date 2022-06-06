@@ -4,7 +4,7 @@
       <img class="layout__logo" src="@/assets/logo.svg" alt="Citi logo" />
       <div class="todo">
         <h1 class="todo__title h1 font-bold text-brown">Thank you {{ store.state.global.user.name }} !</h1>
-        <Todos/>
+        <Todos />
       </div>
     </div>
   </div>
@@ -19,40 +19,57 @@ const store = useStore()
 </script>
 
 <style lang="scss">
-.layout{
+.layout {
   background: $gradient-primary;
   min-height: 800px;
 
-  &__content{
+  &__content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 65px;
+    padding-top: 35px;
     position: relative;
   }
 
-  &__logo{
-    width: 186px;
+  &__logo {
+    width: 130px;
   }
 }
-.todo{
+
+.todo {
   position: absolute;
-  top: 250px;
+  top: 180px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 95%;
   min-height: 660px;
 
   background: $color-white;
   box-shadow: $box-shadow;
 
-  &__title{
+  &__title {
     text-align: center;
     margin: 30px 0;
   }
 
-  &__content{
+  &__content {
 
+  }
+}
+
+@media (min-width: $md) {
+
+  .layout {
+      padding-top: 65px;
+
+    &__logo {
+      width: 186px;
+    }
+  }
+
+  .todo {
+    top: 250px;
+    width: 100%;
   }
 }
 </style>

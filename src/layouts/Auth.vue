@@ -141,35 +141,29 @@ function clearError () {
   }
 
   &__title {
-    margin-top: 215px;
-    margin-bottom: 70px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 0 8px;
   }
 }
 
 .auth-content {
   display: flex;
-  flex-direction: row;
-  padding-top: 47px;
-  padding-bottom: 36px;
+  flex-direction: column;
+  padding: 47px 8px 36px;
 
   &__left {
-    width: 58%;
   }
 
   &__right {
-    width: 42%;
+    margin-top: 30px;
     position: relative;
   }
 }
 
 .auth-right-container {
-  left: 0;
-  position: absolute;
   box-shadow: $box-shadow;
   background: $color-white;
-  right: 0;
-  //top: -64%;
-  top: -240px;
 
   &__forgot {
     padding: 17px;
@@ -187,5 +181,46 @@ function clearError () {
   padding: 40px 30px 0;
 }
 
+@media (min-width: $lg) {
+  .hero {
+
+    &__title {
+      margin-top: 215px;
+      margin-bottom: 70px;
+    }
+  }
+  .auth-content {
+    display: flex;
+    flex-direction: row;
+    padding: 47px 8px 36px;
+
+    &__left {
+      width: 58%;
+    }
+
+    &__right {
+      margin-top: 0;
+      width: 42%;
+    }
+  }
+
+  .auth-right-container {
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -240px;
+
+    &__forgot {
+      padding: 17px;
+      text-align: center;
+    }
+
+    &__register {
+      background: $color-gray-1;
+      text-align: center;
+      padding: 17px;
+    }
+  }
+}
 
 </style>

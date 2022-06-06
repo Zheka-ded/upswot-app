@@ -38,12 +38,12 @@ import data from '@/data/data'
 
   &__logo {
     width: 56px;
-    height: 35px;
   }
 
   &__content {
     display: flex;
     flex-direction: column;
+    padding: 0 8px;
   }
 
   &__top {
@@ -57,11 +57,12 @@ import data from '@/data/data'
 
   &__nav {
     display: flex;
+    flex-direction: column;
   }
 
   &__nav-item {
     & + & {
-      margin-left: 20px;
+      margin-top: 10px;
     }
   }
 
@@ -69,5 +70,18 @@ import data from '@/data/data'
 
   }
 
+  @media (min-width: $sm) {
+    &__nav {
+      flex-direction: row;
+    }
+
+    &__nav-item {
+      & + & {
+        margin-left: 20px;
+        margin-top: 0;
+      }
+    }
+  }
 }
+
 </style>

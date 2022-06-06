@@ -35,7 +35,7 @@ function formSubmit () {
 .todo-form {
   &__content {
     display: flex;
-    align-items: flex-end;
+    flex-direction: column;
   }
 
   &__input {
@@ -43,7 +43,19 @@ function formSubmit () {
   }
 
   &__actions {
-    width: max-content;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  @media (min-width: $xs ) {
+    &__content{
+      flex-direction: row;
+    align-items: flex-end;
+    }
+
+    &__actions {
+      width: max-content;
+    }
   }
 }
 </style>
