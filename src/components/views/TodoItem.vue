@@ -1,14 +1,33 @@
 <template>
   <li class="li">
     <span>
-      {{ index + 1 }} {{ todo.title }}
+      {{ index + 1 }}
+      <input
+        class="update-input"
+        v-if="isShownInput"
+        type="text"
+        @input="$emit('update:modelValue', $event.target.value)"
+        v-model="todo.title"
+        @keydown.enter="onUpdateTodoItem(todo)"
+      />
+      <span v-else>
+        {{ todo.title }}
+      </span>
     </span>
     <div class="btn-group">
       <button
+        v-if="!isShownInput"
         class="ed"
-        @click="$emit('update-todo', todo)"
+        @click="onShowInput"
       >
         Edit
+      </button>
+      <button
+        v-else
+        class="ed"
+        @click="onUpdateTodoItem(todo)"
+      >
+        Save
       </button>
       <button
         class="rm"
@@ -21,6 +40,8 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+const emits = defineEmits()
 const props = defineProps({
   todo: {
     type: Object,
@@ -32,6 +53,18 @@ const props = defineProps({
     default: () => 1,
   },
 })
+
+const isShownInput = ref(false)
+
+function onShowInput () {
+  isShownInput.value = true
+}
+
+function onUpdateTodoItem (todo) {
+  isShownInput.value = false
+  emits('update-todo', todo)
+}
+
 </script>
 
 <style lang="scss">
@@ -39,8 +72,19 @@ const props = defineProps({
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  padding: 0.5rem 0;
-  margin: 1rem 0;
+  padding: 16px 0 32px;
+  margin: 16px 0;
+}
+
+.update-input{
+  outline: none;
+  border-left: 2px solid $color-primary-1;
+  border-bottom: 2px solid $color-primary-1;
+  border-top: none;
+  border-right: none;
+  width: min-content;
+  font-size: $font-size-6;
+  color: $color-brown;
 }
 
 .btn-group {

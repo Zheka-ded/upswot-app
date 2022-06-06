@@ -11,12 +11,15 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useStore } from 'vuex'
 
+const store = useStore()
 const emits = defineEmits()
 
 let title = ref('')
 
 function formSubmit () {
+  console.log(store.state)
   if (title.value.trim()) {
     const newTodo = {
       id: Date.now(),

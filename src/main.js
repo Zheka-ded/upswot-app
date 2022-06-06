@@ -14,10 +14,13 @@ const app = createApp(App)
 
 
 store.dispatch('login', localStorage.getItem('isAuthenticated'))
-if(localStorage.getItem('user')){
+
+if(localStorage.getItem('user')) {
 	store.dispatch('login', JSON.parse(localStorage.getItem('user')))
 }
 
-// router.push({ name: 'default' }).then(r => r)
+if(localStorage.getItem('todos')) {
+	store.dispatch('updateTodo', JSON.parse(localStorage.getItem('todos')))
+}
 
 app.mount("#app");
